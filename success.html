@@ -108,10 +108,16 @@
             <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
                 Xác minh thành công!
             </h1>
-            <p class="text-white/70 text-sm sm:text-base mb-8 sm:mb-10 leading-relaxed">
-                Tài khoản Discord của bạn đã được liên kết.<br class="hidden sm:block">
-                Bây giờ bạn có thể quay lại Discord để nhận role.
+            <p class="text-white/70 text-sm sm:text-base mb-4 leading-relaxed">
+                Tài khoản Discord của bạn đã được liên kết.
             </p>
+
+            <!-- Role Code Info -->
+            <div id="roleCodeInfo" class="hidden mb-6 p-4 rounded-xl bg-mint-400/10 border border-mint-400/20">
+                <p class="text-mint-400 font-semibold">🎯 Role Code của bạn: <span id="roleCode"
+                        class="text-white">-</span></p>
+                <p class="text-white/60 text-sm mt-1">Bạn có thể pick các role yêu cầu mã này trong Discord.</p>
+            </div>
 
             <!-- CTA Buttons -->
             <a href="https://discord.gg/WnmBcExNkf" target="_blank"
@@ -135,6 +141,16 @@
             </p>
         </div>
     </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+
+        if (code) {
+            document.getElementById('roleCodeInfo').classList.remove('hidden');
+            document.getElementById('roleCode').textContent = code;
+        }
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đã xảy ra lỗi</title>
+    <meta name="description" content="Có lỗi xảy ra trong quá trình xác minh">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        mint: {
+                            400: '#4ade80',
+                            500: '#22c55e',
+                        },
+                        dark: {
+                            900: '#0a0f14',
+                            800: '#111820',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 10s ease-in-out infinite',
+                        'entrance': 'entrance 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'shake': 'shake 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '50%': { transform: 'translate(-10px, -20px) scale(0.95)' },
+                        },
+                        entrance: {
+                            from: { opacity: '0', transform: 'translateY(40px) scale(0.94)' },
+                            to: { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        shake: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '20%, 60%': { transform: 'translateX(-8px)' },
+                            '40%, 80%': { transform: 'translateX(8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .orb {
+            filter: blur(100px);
+        }
+
+        .glass {
+            background: rgba(17, 24, 32, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-dark-900 text-white min-h-screen flex items-center justify-center overflow-x-hidden relative">
+
+    <!-- Floating Orbs (Red tint for error) -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div
+            class="orb absolute w-[500px] h-[500px] rounded-full bg-gradient-radial from-red-500/40 to-transparent -top-36 -left-36 animate-float">
+        </div>
+        <div class="orb absolute w-[400px] h-[400px] rounded-full bg-gradient-radial from-red-600/40 to-transparent -bottom-24 -right-24 animate-float"
+            style="animation-delay: -3s"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 w-full max-w-md px-4 sm:px-6 lg:max-w-lg">
+        <div class="glass border border-red-500/20 rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-12 shadow-2xl animate-entrance animate-shake text-center"
+            style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 100px -20px rgba(239, 68, 68, 0.3);">
+
+            <!-- Error Icon -->
+            <div class="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-6 sm:mb-7 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center"
+                style="box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.4);">
+                <svg class="w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 text-white" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
+                Đã xảy ra lỗi!
+            </h1>
+            <p class="text-white/70 text-sm sm:text-base mb-8 sm:mb-10 leading-relaxed" id="errorMessage">
+                Không thể hoàn tất quá trình xác minh.<br class="hidden sm:block">
+                Vui lòng thử lại hoặc liên hệ hỗ trợ.
+            </p>
+
+            <!-- CTA Buttons -->
+            <a href="index.html"
+                class="flex items-center justify-center w-full py-4 sm:py-5 px-6 bg-gradient-to-br from-mint-400 to-mint-500 text-dark-900 font-semibold text-base sm:text-lg rounded-xl sm:rounded-2xl transition-all hover:-translate-y-1 hover:shadow-[0_16px_32px_-4px_rgba(74,222,128,0.5)]"
+                style="box-shadow: 0 8px 24px -4px rgba(74, 222, 128, 0.4);">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6" />
+                </svg>
+                Thử lại
+            </a>
+
+            <a href="https://discord.gg/WnmBcExNkf" target="_blank"
+                class="flex items-center justify-center w-full mt-3 sm:mt-4 py-3.5 sm:py-4 px-6 border border-white/15 text-white/70 font-medium text-sm sm:text-base rounded-xl sm:rounded-2xl transition-all hover:bg-white/5 hover:border-white/25 hover:text-white">
+                Liên hệ hỗ trợ
+            </a>
+
+            <!-- Footer -->
+            <p class="mt-6 sm:mt-8 text-xs sm:text-sm text-white/50">
+                Mã lỗi: <span id="errorCode" class="font-mono text-red-400">UNKNOWN</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const reason = params.get('reason');
+
+        const errorMessages = {
+            'invalid_state': 'Phiên xác minh đã hết hạn. Vui lòng thử lại.',
+            'access_denied': 'Bạn đã từ chối yêu cầu xác minh.',
+            'token_error': 'Không thể xác thực với Discord. Vui lòng thử lại.',
+            'metadata_error': 'Không thể cập nhật thông tin xác minh.'
+        };
+
+        if (reason && errorMessages[reason]) {
+            document.getElementById('errorMessage').innerHTML = errorMessages[reason];
+            document.getElementById('errorCode').textContent = reason.toUpperCase().replace('_', ' ');
+        }
+    </script>
+</body>
+
+</html>

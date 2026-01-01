@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác minh thành công!</title>
+    <meta name="description" content="Tài khoản Discord đã được xác minh thành công">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        mint: {
+                            400: '#4ade80',
+                            500: '#22c55e',
+                        },
+                        dark: {
+                            900: '#0a0f14',
+                            800: '#111820',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 10s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'entrance': 'entrance 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'draw-check': 'drawCheck 0.6s ease-out 0.3s forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '50%': { transform: 'translate(-10px, -20px) scale(0.95)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(74, 222, 128, 0.6)', transform: 'scale(1)' },
+                            '50%': { boxShadow: '0 0 0 30px rgba(74, 222, 128, 0)', transform: 'scale(1.02)' },
+                        },
+                        entrance: {
+                            from: { opacity: '0', transform: 'translateY(40px) scale(0.94)' },
+                            to: { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        drawCheck: {
+                            to: { strokeDashoffset: '0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .orb {
+            filter: blur(100px);
+        }
+
+        .glass {
+            background: rgba(17, 24, 32, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .checkmark-path {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawCheck 0.6s ease-out 0.3s forwards;
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-dark-900 text-white min-h-screen flex items-center justify-center overflow-x-hidden relative">
+
+    <!-- Floating Orbs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div
+            class="orb absolute w-[500px] h-[500px] rounded-full bg-gradient-radial from-mint-400/60 to-transparent -top-36 -left-36 animate-float">
+        </div>
+        <div class="orb absolute w-[400px] h-[400px] rounded-full bg-gradient-radial from-mint-500/60 to-transparent -bottom-24 -right-24 animate-float"
+            style="animation-delay: -3s"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 w-full max-w-md px-4 sm:px-6 lg:max-w-lg">
+        <div class="glass border border-mint-400/15 rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-12 shadow-2xl animate-entrance text-center"
+            style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 100px -20px rgba(74, 222, 128, 0.4);">
+
+            <!-- Success Icon -->
+            <div
+                class="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-6 sm:mb-7 bg-gradient-to-br from-mint-400 to-mint-500 rounded-full flex items-center justify-center animate-pulse-glow">
+                <svg class="w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18" viewBox="0 0 24 24" fill="none">
+                    <polyline class="checkmark-path" points="20 6 9 17 4 12" stroke="#0a0f14" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
+                Xác minh thành công!
+            </h1>
+            <p class="text-white/70 text-sm sm:text-base mb-8 sm:mb-10 leading-relaxed">
+                Tài khoản Discord của bạn đã được liên kết.<br class="hidden sm:block">
+                Bây giờ bạn có thể quay lại Discord để nhận role.
+            </p>
+
+            <!-- CTA Buttons -->
+            <a href="https://discord.gg/WnmBcExNkf" target="_blank"
+                class="flex items-center justify-center w-full py-4 sm:py-5 px-6 bg-gradient-to-br from-mint-400 to-mint-500 text-dark-900 font-semibold text-base sm:text-lg rounded-xl sm:rounded-2xl transition-all hover:-translate-y-1 hover:shadow-[0_16px_32px_-4px_rgba(74,222,128,0.5)]"
+                style="box-shadow: 0 8px 24px -4px rgba(74, 222, 128, 0.4);">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+                </svg>
+                Tham gia Server
+            </a>
+
+            <a href="index.html"
+                class="flex items-center justify-center w-full mt-3 sm:mt-4 py-3.5 sm:py-4 px-6 border border-white/15 text-white/70 font-medium text-sm sm:text-base rounded-xl sm:rounded-2xl transition-all hover:bg-white/5 hover:border-white/25 hover:text-white">
+                ← Quay lại trang chủ
+            </a>
+
+            <!-- Footer -->
+            <p class="mt-6 sm:mt-8 text-xs sm:text-sm text-white/50">
+                Cảm ơn bạn đã xác minh tài khoản!
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
